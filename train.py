@@ -20,6 +20,8 @@ def train(model, config):
     else:
         device = torch.device('cpu')
 
+    print(device)
+
     model = model.to(device)
     optimizer = AdamW(model.parameters(), lr=config.lr, eps=config.eps)
     epoch = config.epoch
@@ -82,7 +84,7 @@ def train(model, config):
             logits = outputs[0]
 
             logits = logits.detach().cpu().numpy()
-            label_ids = b_labels.to('cpu').numpy()
+            val_labels = val_labels.to('cpu').numpy()
             tmp_eval_accuracy = flat_accuracy(logits, val_labels)
             val_acc += tmp_eval_accuracy
             n_eval_steps += 1
