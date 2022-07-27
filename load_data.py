@@ -4,6 +4,7 @@ from torch.utils.data import TensorDataset, RandomSampler, SequentialSampler, Da
 import torch
 from transformers import BertTokenizer
 from keras_preprocessing.sequence import pad_sequences
+from config import Config
 
 
 def load_txt(txt_path):
